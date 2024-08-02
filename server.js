@@ -1,11 +1,17 @@
 import express from "express";
+import { createServer } from "node:http";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { Server } from "socket.io";
 
 const app = express();
-const PORT = 4000;
+const PORT = 3000;
+const server = createServer(app);
 
-const server = app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+app.get("/", (req, res) => {
+  res.sendFile(join(__dirname, "public/index.html"));
 });
 
 app.use(express.static("public"));
@@ -34,3 +40,7 @@ function socketConnected(socket) {
 
   io.emit("totalUser", totalUser.size);
 }
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port http://localhost:${PORT}`);
+});
