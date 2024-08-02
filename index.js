@@ -32,13 +32,12 @@ function socketConnected(socket) {
   });
 
   totalUser.add(socket.id);
+  io.emit("totalUser", totalUser.size);
 
   socket.on("disconnect", () => {
     totalUser.delete(socket.id);
     io.emit("totalUser", totalUser.size);
   });
-
-  io.emit("totalUser", totalUser.size);
 }
 
 server.listen(PORT, () => {

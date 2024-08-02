@@ -6,12 +6,23 @@ const form = document.getElementById("chat_form");
 const totalUser = document.getElementById("user");
 const joinForm = document.getElementById("joinForm");
 
+function getChatName() {
+  const chatName = window.localStorage.getItem("chatName");
+  if (chatName) {
+    document.getElementById("name").innerText = chatName;
+    document.getElementById("enter").style.display = "none";
+  }
+}
+
+getChatName();
+
 joinForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!document.getElementById("username").value) return;
   const chatName = document.getElementById("username").value;
   document.getElementById("name").innerText = chatName;
   document.getElementById("enter").style.display = "none";
+  window.localStorage.setItem("chatName", chatName);
 });
 
 form.addEventListener("submit", (e) => {
