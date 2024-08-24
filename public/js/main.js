@@ -66,6 +66,7 @@ function appendMessage(data, isMe = false) {
 // send notification
 
 const nsgBox = document.getElementById("message");
+const nameField = document.getElementById("name");
 
 nsgBox.addEventListener("click", (e) => {
   socket.emit("notification", `✍️ ${nameField.innerText} is typing...`);

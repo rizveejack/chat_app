@@ -29,7 +29,7 @@
     background: red;
     z-index: 3;
     position: fixed;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-content: center;
     align-items: center;
@@ -99,7 +99,7 @@ ul {
 }
 
 .chat-me {
-    background: hsl(39deg 100% 98.15%);
+    background: hsl(39deg 100% 87.93%);
     color: black;
     padding: 1rem;
     border-radius: 2rem 2rem 0rem 3rem;
